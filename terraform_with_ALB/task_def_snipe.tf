@@ -1,3 +1,22 @@
+resource "aws_cloudwatch_log_group" "snipe" {
+  name = "/ecs/snipe"
+
+  tags = {
+    Environment = "production"
+    Application = "snipe"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "mysql" {
+  name = "/ecs/mysql"
+
+  tags = {
+    Environment = "production"
+    Application = "mysql"
+  }
+}
+
+
 resource "aws_ecs_task_definition" "snipe-main" {
   family                   = "my_snipe_test-main"
   requires_compatibilities = ["FARGATE"]
