@@ -14,7 +14,7 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket = "snipeitecs"
+    bucket = "snipeitecs1"
     key    = "path/tf.state"
     region =  "ap-south-1"
     encrypt = true
