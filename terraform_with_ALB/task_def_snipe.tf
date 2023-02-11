@@ -7,6 +7,7 @@ resource "aws_cloudwatch_log_group" "snipe" {
   }
 }
 
+
 resource "aws_cloudwatch_log_group" "mysql" {
   name = "/ecs/mysql"
 
