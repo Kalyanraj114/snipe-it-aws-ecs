@@ -40,16 +40,17 @@ jobs:
           IMAGE_TAG: ${{ github.event.head_commit.message }}
         run: |
           echo $IMAGE_TAG
-          # cd terraform_with_ALB
-          # terraform init
+          cd terraform_with_ALB
+          terraform init
           # terraform destroy -auto-approve -input=false
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-        with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        # with:
+        #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
       - name: Terraform Init
         run: |
           cd terraform_with_ALB
